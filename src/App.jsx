@@ -1,4 +1,5 @@
 import { Post } from "./Post"
+import './styles.css'
 
 function App() {
   return (
