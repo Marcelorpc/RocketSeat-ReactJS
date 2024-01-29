@@ -11,10 +11,13 @@ function App() {
     <div>
       <Header />
 
-      <div className={styles.wrapper}>
-        <Sidebar />
-        <Post />
-      </div>
+      <main>
+        <div className={styles.wrapper}>
+          <Sidebar />
+          <Post />
+          <Post />
+        </div>
+      </main>
     </div>
   )
 }
