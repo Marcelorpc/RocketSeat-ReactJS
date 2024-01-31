@@ -3,7 +3,7 @@ import styles from "./Post.module.css"
 import { Avatar } from "./Avatar"
 import { Comment } from "./Comment"
 
-import { format, formatDistanceToNow } from 'date-fns'
+import { format, formatDistanceToNow, set } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
 import { useState } from "react"
@@ -33,6 +33,15 @@ export function Post({author, content, publishedAt}) {
 
   function handleNewCommentChange () {
     setNewCommentText(event.target.value)
+  }
+
+  function deleteComment (commentToDelete) {
+    const commentsWithoutDeletedOne = comments.filter(comment => {
+      return comment !== commentToDelete;
+    })
+    console.log(commentsWithoutDeletedOne)
+
+    setComments(commentsWithoutDeletedOne)
   }
 
   return (
@@ -79,7 +88,7 @@ export function Post({author, content, publishedAt}) {
 
       <div className={styles.commentList}>
         {comments.map(comment => {
-          return <Comment key={content} content={comment} />
+          return <Comment key={comment} content={comment} deleteComment={deleteComment}/>
         })}
       </div> 
     </article>
